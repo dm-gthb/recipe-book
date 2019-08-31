@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { RecipiesComponent } from './recipies/recipies.component';
 import { RecipeListComponent } from './recipies/recipe-list/recipe-list.component';
 import { RecipeDetailComponent } from './recipies/recipe-detail/recipe-detail.component';
-import { RecipeItemComponent } from './recipies/recipe-list/recipe-item/recipe-item.component';
+import { RecipeItemComponent } from './recipies/recipe-item/recipe-item.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 
