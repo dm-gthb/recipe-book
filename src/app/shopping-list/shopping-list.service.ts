@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
 
 @Injectable({providedIn: 'root'})
@@ -9,11 +9,26 @@ export class ShoppingListService {
     new Ingredient('Tomatoes', 3),
   ];
 
+  ingredientSelect = new EventEmitter<number>()
+
   getIngredients() {
     return this.ingredients;
   }
 
   addIngredient(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
+  }
+
+  deleteIngredient(index: number) {
+    this.ingredients.splice(index, 1);
+  }
+
+  getIngredient(index: number): Ingredient {
+    return this.ingredients[index];
+  }
+
+  updateIngredient(index: number, ingredient: Ingredient) {
+    this.ingredients[index].name = ingredient.name;
+    this.ingredients[index].amount = ingredient.amount;
   }
 }

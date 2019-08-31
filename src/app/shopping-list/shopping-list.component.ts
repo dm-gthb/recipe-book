@@ -16,4 +16,8 @@ export class ShoppingListComponent implements OnInit {
     this.ingredients = this.slService.getIngredients();
   }
 
+  onIngredientSelect(index: number) {
+    this.slService.ingredientSelect.emit(index)
+  }
+
 }
