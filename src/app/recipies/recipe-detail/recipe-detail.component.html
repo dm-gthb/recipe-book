@@ -1,45 +1,50 @@
-<div class="row">
-  <div class="col-xs-12">
-    <img src="" alt="" class="img-responsive">
+<div *ngIf="recipe; else noRecipe">
+  <div
+    class="row">
+    <div class="col-xs-12">
+      <img src="{{recipe.imagePath}}" alt="" class="img-responsive">
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <h1>Recipe Name</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{recipe.name}}</h1>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-12">
-    <div class="btn-group">
-      <button
-        class="btn btn-primary dropdown-toggle">
-        Manage Recipe
-        <span class="caret"></span>
-      </button>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="btn-group">
+        <button
+          class="btn btn-primary dropdown-toggle">
+          Manage Recipe
+          <span class="caret"></span>
+        </button>
 
-      <ul class="dropdown-menu">
-        <li>
-          <a href="#">Add ingredients to shopping list</a>
-        </li>
-        <li>
-          <a href="#">Edit recipe</a>
-        </li>
-        <li>
-          <a href="#">Delete recipe</a>
-        </li>
-      </ul>
+        <ul class="dropdown-menu">
+          <li>
+            <a href="#">Add ingredients to shopping list</a>
+          </li>
+          <li>
+            <a href="#">Edit recipe</a>
+          </li>
+          <li>
+            <a href="#">Delete recipe</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      {{recipe.description}}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+        ingredients
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-xs-12">
-    description
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-xs-12">
-      ingredients
-  </div>
-</div>
+<ng-template #noRecipe>select recipe to see details</ng-template>
