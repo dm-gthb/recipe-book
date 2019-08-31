@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
   templateUrl: './shopping-edit.component.html',
 })
-export class ShoppingEditComponent implements OnInit {
+export class ShoppingEditComponent {
 
-  constructor() { }
+  constructor(private slService: ShoppingListService) { }
 
-  ngOnInit() {
+  onSubmit(form: NgForm) {
+    this.slService.addIngredient(form.value)
   }
-
 }
