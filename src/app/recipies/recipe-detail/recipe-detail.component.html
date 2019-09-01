@@ -1,5 +1,5 @@
-<div *ngIf="recipe; else noRecipe">
-  <div
+<div>
+    <div
     class="row">
     <div class="col-xs-12">
       <img src="{{recipe.imagePath}}" alt="" class="img-responsive">
@@ -56,5 +56,3 @@
     </div>
   </div>
 </div>
-
-<ng-template #noRecipe>select recipe to see details</ng-template>

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { RecipeService } from '../recipe.service';
 import { Recipe } from '../recipe.model';
 import { Subscription } from 'rxjs';
-import { Ingredient } from 'src/app/shared/ingredient.model';
 import { ShoppingListService } from 'src/app/shopping-list/shopping-list.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -16,15 +16,14 @@ export class RecipeDetailComponent {
   constructor(
     private recipeService: RecipeService,
     private slService: ShoppingListService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.subscription = this.recipeService.recipeSelected
-      .subscribe((recipe: Recipe) => this.recipe = recipe);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.route.params
+      .subscribe(
+        (params: Params) => this.recipe = this.recipeService.getRecipe(+params.id)
+      )
   }
 
   addIngredients() {
