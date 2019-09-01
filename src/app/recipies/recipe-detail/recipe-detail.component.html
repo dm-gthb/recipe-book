@@ -22,7 +22,10 @@
 
         <ul class="dropdown-menu">
           <li>
-            <a href="#">Add ingredients to shopping list</a>
+            <a
+              (click)="addIngredients(recipe.ingredients)"
+            >
+            Add ingredients to shopping list</a>
           </li>
           <li>
             <a href="#">Edit recipe</a>
