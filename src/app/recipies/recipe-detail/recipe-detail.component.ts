@@ -27,7 +27,7 @@ export class RecipeDetailComponent {
     this.subscription.unsubscribe();
   }
 
-  addIngredients(ingredients: Ingredient[]) {
-    this.slService.addIngredients(ingredients);
+  addIngredients() {
+    this.slService.addIngredients(this.recipe.ingredients);
   }
 }
