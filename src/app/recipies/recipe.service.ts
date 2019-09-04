@@ -37,4 +37,8 @@ export class RecipeService {
   getRecipe(index: number) {
     return this.recipies[index];
   }
+
+  updateRecipe(updatedRecipe: Recipe, index: number) {
+    this.recipies[index] = {...this.recipies[index], ...updatedRecipe};
+  }
 }
