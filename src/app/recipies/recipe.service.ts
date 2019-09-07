@@ -41,4 +41,8 @@ export class RecipeService {
   updateRecipe(updatedRecipe: Recipe, index: number) {
     this.recipies[index] = {...this.recipies[index], ...updatedRecipe};
   }
+
+  addRecipe(recipe: Recipe) {
+    this.recipies.push(recipe);
+  }
 }
