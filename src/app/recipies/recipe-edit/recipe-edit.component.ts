@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
-  templateUrl: './recipe-edit.component.html'
+  templateUrl: './recipe-edit.component.html',
+  styleUrls: ['./recipe-edit.component.css']
 })
 export class RecipeEditComponent {
 
@@ -42,8 +43,8 @@ export class RecipeEditComponent {
         for (const ingredient of ingredients) {
           ingredientsFormArray.push(
             new FormGroup({
-              name: new FormControl(ingredient.name),
-              amount: new FormControl(ingredient.amount),
+              name: new FormControl(ingredient.name, Validators.required),
+              amount: new FormControl(ingredient.amount, Validators.required),
             })
           );
         }
@@ -54,9 +55,9 @@ export class RecipeEditComponent {
 
     if (this.editMode) {
       this.recipeEditForm = new FormGroup({
-        name: new FormControl(this.editMode ? recipe.name : ''),
-        description: new FormControl(this.editMode ? recipe.description : ''),
-        imagePath: new FormControl(this.editMode ? recipe.imagePath : ''),
+        name: new FormControl(this.editMode ? recipe.name : '', Validators.required),
+        description: new FormControl(this.editMode ? recipe.description : '', Validators.required),
+        imagePath: new FormControl(this.editMode ? recipe.imagePath : '', Validators.required),
         ingredients: this.editMode ? createIngredientsFormArray(recipe['ingredients']) : new FormArray([]),
       })
     }
