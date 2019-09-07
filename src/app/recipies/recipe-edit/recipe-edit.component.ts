@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Ingredient } from 'src/app/shared/ingredient.model';
 
 @Component({
   selector: 'app-recipe-edit',
@@ -35,13 +36,47 @@ export class RecipeEditComponent {
     const recipe = this.recipeService.getRecipe(this.id);
     this.imagePath = recipe.imagePath;
 
+    const createIngredientsFormArray = (ingredients: Ingredient[]) => {
+      const ingredientsFormArray = new FormArray([]);
+      if (ingredients.length) {
+        for (const ingredient of ingredients) {
+          ingredientsFormArray.push(
+            new FormGroup({
+              name: new FormControl(ingredient.name),
+              amount: new FormControl(ingredient.amount),
+            })
+          );
+        }
+      }
+
+      return ingredientsFormArray;
+    }
+
     if (this.editMode) {
       this.recipeEditForm = new FormGroup({
         name: new FormControl(this.editMode ? recipe.name : ''),
         description: new FormControl(this.editMode ? recipe.description : ''),
         imagePath: new FormControl(this.editMode ? recipe.imagePath : ''),
+        ingredients: this.editMode ? createIngredientsFormArray(recipe['ingredients']) : new FormArray([]),
       })
     }
+  }
+
+  get ingredientsControls() {
+    return (this.recipeEditForm.get('ingredients') as FormArray).controls;
+  }
+
+  onAddIngredient() {
+    (<FormArray>this.recipeEditForm.get('ingredients')).push(
+      new FormGroup({
+        name: new FormControl(),
+        amount: new FormControl(),
+      })
+    )
+  }
+
+  onDeleteIngredient(index: number) {
+    (<FormArray>this.recipeEditForm.get('ingredients')).removeAt(index);
   }
 
   onSubmit() {
