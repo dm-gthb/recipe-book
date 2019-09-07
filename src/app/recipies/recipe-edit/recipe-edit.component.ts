@@ -28,7 +28,6 @@ export class RecipeEditComponent {
           this.editMode = params.id !== null;
           this.initForm();
         }
-
       )
   }
 
@@ -38,17 +37,15 @@ export class RecipeEditComponent {
 
     if (this.editMode) {
       this.recipeEditForm = new FormGroup({
-        recipe: new FormGroup({
-          name: new FormControl(this.editMode ? recipe.name : ''),
-          description: new FormControl(this.editMode ? recipe.description : ''),
-          imagePath: new FormControl(this.editMode ? recipe.imagePath : ''),
-        }),
+        name: new FormControl(this.editMode ? recipe.name : ''),
+        description: new FormControl(this.editMode ? recipe.description : ''),
+        imagePath: new FormControl(this.editMode ? recipe.imagePath : ''),
       })
     }
   }
 
   onSubmit() {
-    this.recipeService.updateRecipe(this.recipeEditForm.value.recipe, this.id);
+    this.recipeService.updateRecipe(this.recipeEditForm.value, this.id);
     this.router.navigate(['../']);
   }
 }

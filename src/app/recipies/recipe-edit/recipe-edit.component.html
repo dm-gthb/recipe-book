@@ -1,71 +1,68 @@
 <div class="row">
   <div class="col-xs-12">
-      <form
-        [formGroup]="recipeEditForm"
-        (ngSubmit)="onSubmit()">
+    <form
+      [formGroup]="recipeEditForm"
+      (ngSubmit)="onSubmit()">
 
-        <div class="row">
-          <div class="col-xs-12">
-            <button
-            [disabled]="!recipeEditForm.valid"
-            class="btn btn-success">Save</button>
-          </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+          [disabled]="!recipeEditForm.valid"
+          class="btn btn-success">Save</button>
         </div>
+      </div>
 
-
-        <div formGroupName="recipe">
-          <div class="row">
-            <div class="col-xs-12">
-              <input
-                formControlName="name"
-                class="form-group"
-                type="text"
-                id="name"
-                name="name">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12">
-              <img
-                src="{{ imagePath }}"
-                style="max-width: 250px; max-height: 250px;"
-                alt=""
-                class="img-responsive">
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12">
-              <textarea
-                formControlName="description"
-                class="form-group"
-                id="description"
-                name="description">
-              </textarea>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12">
-              <input
-                formControlName="imagePath"
-                class="form-group"
-                type="text"
-                id="imagePath"
-                name="imagePath">
-            </div>
-          </div>
-
+      <div class="row">
+        <div class="col-xs-12">
+          <input
+            formControlName="name"
+            class="form-group"
+            type="text"
+            id="name"
+            name="name">
         </div>
+      </div>
 
-        <!-- <div formGroupName="ingredients">
-          <div
-            *ngFor="let ingredient of "
-            class="row">
+      <div class="row">
+        <div class="col-xs-12">
+          <img
+            src="{{ imagePath }}"
+            style="max-width: 250px; max-height: 250px;"
+            alt=""
+            class="img-responsive">
+        </div>
+      </div>
 
-          </div>
-        </div> -->
-        </form>
+      <div class="row">
+        <div class="col-xs-12">
+          <textarea
+            formControlName="description"
+            class="form-group"
+            id="description"
+            name="description">
+          </textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <input
+            formControlName="imagePath"
+            class="form-group"
+            type="text"
+            id="imagePath"
+            name="imagePath">
+        </div>
+      </div>
+
+
+    <!-- <div formGroupName="ingredients">
+      <div
+        *ngFor="let ingredient of "
+        class="row">
+
+      </div>
+    </div> -->
+    </form>
   </div>
 </div>
