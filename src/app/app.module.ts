@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -14,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { Dropdown } from './shared/dropdown.directive';
 import { RecipeEditComponent } from './recipies/recipe-edit/recipe-edit.component';
 import { RecipeStartComponent } from './recipies/recipe-start/recipe-start.component';
+import { ShoppingListReducer } from './shopping-list/store/shopping-list.reducer';
 
 
 @NgModule({
@@ -35,6 +37,7 @@ import { RecipeStartComponent } from './recipies/recipe-start/recipe-start.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    StoreModule.forRoot({shoppingList: ShoppingListReducer}),
   ],
   providers: [],
   bootstrap: [AppComponent]
