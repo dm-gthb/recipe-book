@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { RecipiesComponent } from './recipies/recipies.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { RecipeDetailComponent } from './recipies/recipe-detail/recipe-detail.component';
-import { RecipeListComponent } from './recipies/recipe-list/recipe-list.component';
 import { RecipeStartComponent } from './recipies/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipies/recipe-edit/recipe-edit.component';
+import { RecipesResolverService } from './recipies/recipe-resolver.service';
 
 const appRoutes: Routes = [
   {
@@ -22,11 +22,13 @@ const appRoutes: Routes = [
       },
       {
         path: ':id',
-        component: RecipeDetailComponent
+        component: RecipeDetailComponent,
+        resolve: [RecipesResolverService]
       },
       {
         path: ':id/edit',
-        component: RecipeEditComponent
+        component: RecipeEditComponent,
+        resolve: [RecipesResolverService]
       },
     ]
   },
