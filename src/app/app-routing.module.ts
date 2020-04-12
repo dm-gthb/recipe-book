@@ -6,11 +6,14 @@ import { RecipeDetailComponent } from './recipies/recipe-detail/recipe-detail.co
 import { RecipeStartComponent } from './recipies/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipies/recipe-edit/recipe-edit.component';
 import { RecipesResolverService } from './recipies/recipe-resolver.service';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuard } from './auth/auth-guard';
 
 const appRoutes: Routes = [
   {
     path: 'recipies',
     component: RecipiesComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -33,6 +36,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'shopping-list', component: ShoppingListComponent },
+  { path: 'auth', component: AuthComponent },
   {
     path: '',
     redirectTo: '/recipies',
